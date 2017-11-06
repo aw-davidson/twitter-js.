@@ -1,6 +1,9 @@
 const express = require( 'express' );
+const nunjucks = require('nunjucks');
 const app = express(); // creates an instance of an express application
 const PORT = 3000;
+nunjucks.configure('views', {noCache: true});
+let res = nunjucks.render('index.html', {name: 'Gandolf'})
 app.use(function (req, res, next) {
   // do your logging here
   console.log(`${req.method}${req.path}`)

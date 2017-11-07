@@ -90,8 +90,8 @@
     });
     // When 'new_tweet' events are fired, do something with the packaged tweet
     socket.on('newTweet', function (tweet) {
-      console.log(tweet);
-      alert('Refreshing... check the console...');
+      var p = document.createElement(`${tweet}`)
+      getElementById('tweetDiv').appendChild(p);
       // some logic to add the new tweet to the DOM…
     });
   </script>

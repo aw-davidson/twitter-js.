@@ -14,10 +14,10 @@ nunjucks.configure('views', {noCache: true}); // point nunjucks to the proper di
 // });
 
 app.use('/', routes);
-  // do your logging here
-  // console.log(`${req.method}${req.path}`)
-  // call `next`, or else your app will be a black hole — receiving requests but never properly responding
-  // next();
+
+app.use(express.static('views'));
+
+app.use(express.static('public'));
 
 app.listen(PORT, () => {
   console.log(`listening on ${PORT}`);

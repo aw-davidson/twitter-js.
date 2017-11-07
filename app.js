@@ -1,3 +1,4 @@
+const routes = require('./routes');
 const express = require( 'express' );
 const nunjucks = require('nunjucks');
 const app = express(); // creates an instance of an express application
@@ -12,22 +13,12 @@ nunjucks.configure('views', {noCache: true}); // point nunjucks to the proper di
 //   console.log(output);
 // });
 
-app.use(function (req, res, next) {
+app.use('/', routes);
   // do your logging here
-  console.log(`${req.method}${req.path}`)
+  // console.log(`${req.method}${req.path}`)
   // call `next`, or else your app will be a black hole — receiving requests but never properly responding
-  next();
-})
-app.post('/', (req, res) => {
-  //body
-})
-
-app.get('/', (req, res) => {
-  const people = [{name: 'Full'}, {name: 'Stacker'}, {name: 'Son'}];
-  res.render( 'index', {title: 'Hall of Fame', people: people})
-});
-
+  // next();
 
 app.listen(PORT, () => {
-  console.log(`listening on ${PORT}`)
+  console.log(`listening on ${PORT}`);
 })
